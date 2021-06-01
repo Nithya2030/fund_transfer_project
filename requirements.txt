@@ -1,0 +1,9 @@
+Flask 
+pymongo
+Flask-REST
+flasgger
+json5
+requests
+jsonify
+datetime2
+make-response

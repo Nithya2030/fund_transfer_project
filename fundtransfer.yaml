@@ -1,0 +1,103 @@
+paths:
+    /fundtransfer:
+        post:
+          summary: Add Details.
+          consumes:
+              - application/json
+          produces:
+              - application/json
+          parameters:
+              - in: body
+                name: Fund
+                description: Add beneficiary details.
+                schema:
+                  $ref: '#/definitions/addfunddetail'
+          responses:
+                '200':
+                  description: Details added Successfuly
+                '400':
+                  description: Bad request.
+                "405":
+                  description: "Invalid input"
+    /getdetail:
+        get:
+          summary: Get Bank
+          consumes:
+              - application/json
+          produces:
+              - application/json
+          parameters:
+              - in: body
+                name: Fund
+                description: Get beneficiary details.
+                schema:
+                  $ref: '#/definitions/getfunddetail' 
+          responses:
+              '200':
+                description: OK
+              '400':
+                description: Bad request.
+              "405":
+                description: "Account Not Found"
+    
+    
+    /getallaccdetails:
+        get:
+          summary: Get all Account details
+          consumes:
+              - application/json
+          produces:
+              - application/json
+          parameters: []
+              
+          responses:
+              '200':
+                description: OK
+              '400':
+                description: Invalid Account.
+              "405":
+                description: "Account Not Found"               
+                  
+definitions:
+  addfunddetail:
+    type: object
+    required: true
+    properties:
+      transfer_from:
+        type: integer
+        in: formData
+      bank_name:
+        type: string
+        in: formData
+      amount:
+        type: integer
+        in: formData
+      remarks:
+        type: string
+        in: formData
+        required: false
+      payment_type:
+        type: string
+        in: formData 
+      toaccount:
+        type: integer
+        in: formData
+  getfunddetail:
+    type: object
+    required: true
+    properties:
+      payeename:
+        type: string
+        in: formData
+      date_from:
+        type: string
+        in: formData
+        format: date
+      date_to:
+        type: string
+        in: formData
+        format: date
+      debitaccno:
+        type: integer
+        in: formData   
+   
